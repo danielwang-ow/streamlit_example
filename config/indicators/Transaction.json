@@ -1,0 +1,65 @@
+[
+  {
+    "name": "TRAN_SALE_IND",
+    "description": "TRAN_CDE = '1720'",
+    "category": "Transaction",
+    "logic": {
+      "op": "eq",
+      "field": "TRAN_CDE",
+      "value": "1720"
+    }
+  },
+  {
+    "name": "TRAN_RT_IND",
+    "description": "TRAN_CDE = '1730'",
+    "category": "Transaction",
+    "logic": {
+      "op": "eq",
+      "field": "TRAN_CDE",
+      "value": "1730"
+    }
+  },
+  {
+    "name": "V232_IND",
+    "description": "PROC_DT < '2024-04-12'",
+    "category": "Transaction",
+    "logic": {
+      "op": "lt",
+      "field": "PROC_DT",
+      "value": "2024-04-12"
+    }
+  },
+  {
+    "name": "V241_IND",
+    "description": "PROC_DT >= '2024-04-12'",
+    "category": "Transaction",
+    "logic": {
+      "op": "gte",
+      "field": "PROC_DT",
+      "value": "2024-04-12"
+    }
+  },
+  {
+    "name": "FRAUD_ADJ_IND",
+    "description": "0: REGULATED WITHOUT FRAUD ADJ; 1: REGULATED WITH FRAUD ADJ; 2: UNKNOWN",
+    "category": "Transaction",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "eq",
+          "field": "CRD_PRDCT_GRP_ID",
+          "value": 9
+        },
+        1,
+        {
+          "op": "eq",
+          "field": "CRD_PRDCT_GRP_ID",
+          "value": 10
+        },
+        0,
+        2
+      ]
+    }
+  }
+]

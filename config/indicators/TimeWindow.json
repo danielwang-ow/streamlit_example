@@ -1,0 +1,52 @@
+[
+  {
+    "name": "TML_WT_2_IND",
+    "description": "1 if TIME_DAYS_COALESCE <= 2, else 0",
+    "category": "TimeWindow",
+    "logic": {
+      "op": "lte",
+      "field": "TIME_DAYS_COALESCE",
+      "value": 2
+    }
+  },
+  {
+    "name": "TML_WT_3_IND",
+    "description": "1 if TIME_DAYS_COALESCE <= 3, else 0",
+    "category": "TimeWindow",
+    "logic": {
+      "op": "lte",
+      "field": "TIME_DAYS_COALESCE",
+      "value": 3
+    }
+  },
+  {
+    "name": "TML_WT_5_IND",
+    "description": "1 if TIME_DAYS_COALESCE <= 5, else 0",
+    "category": "TimeWindow",
+    "logic": {
+      "op": "lte",
+      "field": "TIME_DAYS_COALESCE",
+      "value": 5
+    }
+  },
+  {
+    "name": "TML_WT_7_IND",
+    "description": "1 if TIME_DAYS_COALESCE <= 7, else 0",
+    "category": "TimeWindow",
+    "logic": {
+      "op": "lte",
+      "field": "TIME_DAYS_COALESCE",
+      "value": 7
+    }
+  },
+  {
+    "name": "TML_WT_8_IND",
+    "description": "1 if TIME_DAYS_COALESCE <= 8, else 0",
+    "category": "TimeWindow",
+    "logic": {
+      "op": "lte",
+      "field": "TIME_DAYS_COALESCE",
+      "value": 8
+    }
+  }
+]

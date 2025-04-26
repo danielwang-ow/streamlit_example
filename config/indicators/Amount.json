@@ -1,0 +1,154 @@
+[
+  {
+    "name": "AMT_TLR_IND",
+    "description": "Complex amount tolerance logic",
+    "category": "Amount",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "eq",
+              "field": "TOT_TRAN_AMT",
+              "value": 0
+            },
+            {
+              "op": "eq",
+              "field": "TRAN_RSPNS_AMT",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "is_null",
+              "field": "TOT_TRAN_AMT"
+            },
+            {
+              "op": "is_null",
+              "field": "TRAN_RSPNS_AMT"
+            }
+          ]
+        },
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STTL_STD_POS_ENT",
+              "value": [
+                "05",
+                "83"
+              ]
+            },
+            {
+              "op": "in",
+              "field": "STTL_AUTH_RSPNS_CDE",
+              "value": [
+                "Y1",
+                "Y3"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STD_MCC_CDE",
+              "value": [
+                "4121",
+                "7230"
+              ]
+            },
+            {
+              "op": "between",
+              "field": "AMT_RATIO",
+              "low": 0.8,
+              "high": 1.2
+            }
+          ]
+        },
+        {
+          "op": "eq",
+          "field": "MCC_PASSENGER_IND",
+          "value": 1
+        },
+        {
+          "op": "between",
+          "field": "STD_MCC_CDE",
+          "low": "5815",
+          "high": "5818"
+        },
+        {
+          "op": "in",
+          "field": "STD_MCC_CDE",
+          "value": [
+            "4111",
+            "4131",
+            "5812",
+            "5813",
+            "5814"
+          ]
+        },
+        {
+          "op": "eq",
+          "field": "MCC_HOTEL_CARRENT_IND",
+          "value": 1
+        },
+        {
+          "op": "eq",
+          "field": "MCC_PETROLUEM_IND",
+          "value": 1
+        },
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "eq",
+              "field": "MCC_SUPERMARKET_IND",
+              "value": 1
+            },
+            {
+              "op": "between",
+              "field": "AMT_RATIO",
+              "low": 0.85,
+              "high": 1.15
+            }
+          ]
+        },
+        {
+          "op": "between",
+          "field": "AMT_RATIO",
+          "low": 0.9,
+          "high": 1.1
+        }
+      ]
+    }
+  },
+  {
+    "name": "ECOMM_AMT_IND",
+    "description": "1 if AMT_TLR_IND = 1 or PARTIAL_IND = 1, else 0",
+    "category": "Amount",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "eq",
+          "field": "AMT_TLR_IND",
+          "value": 1
+        },
+        {
+          "op": "eq",
+          "field": "PARTIAL_IND",
+          "value": 1
+        }
+      ]
+    }
+  }
+]

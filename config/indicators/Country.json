@@ -1,0 +1,205 @@
+[
+  {
+    "name": "MCCA_MRCH_CNTRY_IND",
+    "description": "1 if MRCH_CNTRY_CDE in (MEX, Caribbean, Central America), else 0",
+    "category": "Country",
+    "logic": {
+      "op": "in",
+      "field": "MRCH_CNTRY_CDE",
+      "value": [
+        "MEX",
+        "ABW",
+        "AIA",
+        "ANT",
+        "ATG",
+        "BES",
+        "BHS",
+        "BLM",
+        "BLZ",
+        "BMU",
+        "BRB",
+        "CUW",
+        "CYM",
+        "DMA",
+        "DOM",
+        "GRD",
+        "JAM",
+        "KNA",
+        "LCA",
+        "MAF",
+        "MSR",
+        "SXM",
+        "TCA",
+        "TTO",
+        "VCT",
+        "VGB",
+        "CRI",
+        "SLV",
+        "GTM",
+        "HND",
+        "NIC",
+        "PAN"
+      ]
+    }
+  },
+  {
+    "name": "SOUTH_AM_IND",
+    "description": "1 if MRCH_CNTRY_CDE in (South America), else 0",
+    "category": "Country",
+    "logic": {
+      "op": "in",
+      "field": "MRCH_CNTRY_CDE",
+      "value": [
+        "PRY",
+        "BRA",
+        "ARG",
+        "PER",
+        "URY",
+        "CHL",
+        "BOL"
+      ]
+    }
+  },
+  {
+    "name": "US_MRCH_IND",
+    "description": "1 if LENGTH(TRIM(MRCH_CNTRY_CDE)) = 2 OR MRCH_CNTRY_CDE in ('-','USA','GUM','ASM','MNP','UMI','VIR','FSM','MHL','PRI','PLW') OR MRCH_CNTRY_CDE is None, else 0",
+    "category": "Country",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "eq",
+          "field": "LEN_TRIM_MRCH_CNTRY_CDE",
+          "value": 2
+        },
+        {
+          "op": "in",
+          "field": "MRCH_CNTRY_CDE",
+          "value": [
+            "-",
+            "USA",
+            "GUM",
+            "ASM",
+            "MNP",
+            "UMI",
+            "VIR",
+            "FSM",
+            "MHL",
+            "PRI",
+            "PLW"
+          ]
+        },
+        {
+          "op": "is_null",
+          "field": "MRCH_CNTRY_CDE"
+        }
+      ]
+    }
+  },
+  {
+    "name": "US_ISS_IND",
+    "description": "1 if ISS_CNTRY_CDE in ('-','USA','GUM','ASM','MNP','UMI','VIR','FSM','MHL','PRI','PLW'), else 0",
+    "category": "Country",
+    "logic": {
+      "op": "in",
+      "field": "ISS_CNTRY_CDE",
+      "value": [
+        "-",
+        "USA",
+        "GUM",
+        "ASM",
+        "MNP",
+        "UMI",
+        "VIR",
+        "FSM",
+        "MHL",
+        "PRI",
+        "PLW"
+      ]
+    }
+  },
+  {
+    "name": "CNTRY_ARG_IND",
+    "description": "1 if MRCH_CNTRY_CDE in ('ARG'), else 0",
+    "category": "Country",
+    "logic": {
+      "op": "in",
+      "field": "MRCH_CNTRY_CDE",
+      "value": [
+        "ARG"
+      ]
+    }
+  },
+  {
+    "name": "CNTRY_BOL_IND",
+    "description": "1 if MRCH_CNTRY_CDE in ('BOL'), else 0",
+    "category": "Country",
+    "logic": {
+      "op": "in",
+      "field": "MRCH_CNTRY_CDE",
+      "value": [
+        "BOL"
+      ]
+    }
+  },
+  {
+    "name": "CNTRY_BRA_IND",
+    "description": "1 if MRCH_CNTRY_CDE in ('BRA'), else 0",
+    "category": "Country",
+    "logic": {
+      "op": "in",
+      "field": "MRCH_CNTRY_CDE",
+      "value": [
+        "BRA"
+      ]
+    }
+  },
+  {
+    "name": "CNTRY_CHL_IND",
+    "description": "1 if MRCH_CNTRY_CDE in ('CHL'), else 0",
+    "category": "Country",
+    "logic": {
+      "op": "in",
+      "field": "MRCH_CNTRY_CDE",
+      "value": [
+        "CHL"
+      ]
+    }
+  },
+  {
+    "name": "CNTRY_PRY_IND",
+    "description": "1 if MRCH_CNTRY_CDE in ('PRY'), else 0",
+    "category": "Country",
+    "logic": {
+      "op": "in",
+      "field": "MRCH_CNTRY_CDE",
+      "value": [
+        "PRY"
+      ]
+    }
+  },
+  {
+    "name": "CNTRY_PER_IND",
+    "description": "1 if MRCH_CNTRY_CDE in ('PER'), else 0",
+    "category": "Country",
+    "logic": {
+      "op": "in",
+      "field": "MRCH_CNTRY_CDE",
+      "value": [
+        "PER"
+      ]
+    }
+  },
+  {
+    "name": "CNTRY_URY_IND",
+    "description": "1 if MRCH_CNTRY_CDE in ('URY'), else 0",
+    "category": "Country",
+    "logic": {
+      "op": "in",
+      "field": "MRCH_CNTRY_CDE",
+      "value": [
+        "URY"
+      ]
+    }
+  }
+]

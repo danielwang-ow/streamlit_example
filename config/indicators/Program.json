@@ -1,0 +1,52 @@
+[
+  {
+    "name": "PGM_500_IND",
+    "description": "PVI_CDE LIKE 'FDMI%'",
+    "category": "Program",
+    "logic": {
+      "op": "startswith",
+      "field": "PVI_CDE",
+      "value": "FDMI"
+    }
+  },
+  {
+    "name": "PGM_25_IND",
+    "description": "ACQ_ID = 620987 AND TRAN_CDE = '1720'",
+    "category": "Program",
+    "logic": {
+      "op": "and",
+      "args": [
+        {
+          "op": "eq",
+          "field": "ACQ_ID",
+          "value": 620987
+        },
+        {
+          "op": "eq",
+          "field": "TRAN_CDE",
+          "value": "1720"
+        }
+      ]
+    }
+  },
+  {
+    "name": "PGM_26_IND",
+    "description": "ACQ_ID = 620987 AND TRAN_CDE = '1730'",
+    "category": "Program",
+    "logic": {
+      "op": "and",
+      "args": [
+        {
+          "op": "eq",
+          "field": "ACQ_ID",
+          "value": 620987
+        },
+        {
+          "op": "eq",
+          "field": "TRAN_CDE",
+          "value": "1730"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,252 @@
+[
+  {
+    "name": "PROC_RB_IND_STTL",
+    "description": "1 if PROC_CDE LIKE '13%' or '14%' or '15%' or '16%', else 0",
+    "category": "Other",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "startswith",
+          "field": "PROC_CDE",
+          "value": "13"
+        },
+        {
+          "op": "startswith",
+          "field": "PROC_CDE",
+          "value": "14"
+        },
+        {
+          "op": "startswith",
+          "field": "PROC_CDE",
+          "value": "15"
+        },
+        {
+          "op": "startswith",
+          "field": "PROC_CDE",
+          "value": "16"
+        }
+      ]
+    }
+  },
+  {
+    "name": "OFFLINE_CHIP_APR",
+    "description": "1 if STTL_STD_POS_ENT in ('05','83','86') AND STTL_AUTH_RSPNS_CDE in ('Y1','Y3'), else 0",
+    "category": "Other",
+    "logic": {
+      "op": "and",
+      "args": [
+        {
+          "op": "in",
+          "field": "STTL_STD_POS_ENT",
+          "value": [
+            "05",
+            "83",
+            "86"
+          ]
+        },
+        {
+          "op": "in",
+          "field": "STTL_AUTH_RSPNS_CDE",
+          "value": [
+            "Y1",
+            "Y3"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "AUTH_RSPN_IND",
+    "description": "1 if (STTL_STD_POS_ENT in ('05','83','86') AND STTL_AUTH_RSPNS_CDE in ('Y1','Y3')) OR STTL_AUTH_RSPNS_CDE in ('00','10','11'), else 0",
+    "category": "Other",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STTL_STD_POS_ENT",
+              "value": [
+                "05",
+                "83",
+                "86"
+              ]
+            },
+            {
+              "op": "in",
+              "field": "STTL_AUTH_RSPNS_CDE",
+              "value": [
+                "Y1",
+                "Y3"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "in",
+          "field": "STTL_AUTH_RSPNS_CDE",
+          "value": [
+            "00",
+            "10",
+            "11"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "AVS_IND_STTL",
+    "description": "AVS indicator",
+    "category": "Other",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "not_null",
+              "field": "AVS_PSTL_CDE"
+            },
+            {
+              "op": "neq",
+              "field": "AVS_PSTL_CDE",
+              "value": "-"
+            }
+          ]
+        },
+        {
+          "op": "or",
+          "args": [
+            {
+              "op": "startswith",
+              "field": "PROC_CDE",
+              "value": "13"
+            },
+            {
+              "op": "startswith",
+              "field": "PROC_CDE",
+              "value": "14"
+            },
+            {
+              "op": "startswith",
+              "field": "PROC_CDE",
+              "value": "15"
+            },
+            {
+              "op": "startswith",
+              "field": "PROC_CDE",
+              "value": "16"
+            }
+          ]
+        },
+        {
+          "op": "eq",
+          "field": "STTL_STD_POS_ENT",
+          "value": "82"
+        }
+      ]
+    }
+  },
+  {
+    "name": "NRID_IND",
+    "description": "NRID indicator",
+    "category": "Other",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STTL_AUTH_RSPNS_CDE",
+              "value": [
+                "Y1",
+                "Y3"
+              ]
+            },
+            {
+              "op": "in",
+              "field": "STTL_STD_POS_ENT",
+              "value": [
+                "05",
+                "83",
+                "86"
+              ]
+            }
+          ]
+        },
+        1,
+        {
+          "op": "neq",
+          "field": "LENGTH_TRIM_NWK_REF_ID",
+          "value": 15
+        },
+        0,
+        {
+          "op": "eq",
+          "field": "LENGTH_REPLACE_NWK_REF_ID",
+          "value": 0
+        },
+        0,
+        1
+      ]
+    }
+  },
+  {
+    "name": "AUTH_APRV_IND",
+    "description": "1 if STTL_AUTH_RSPNS_CDE in ('00','10','11'), else 0",
+    "category": "Other",
+    "logic": {
+      "op": "in",
+      "field": "STTL_AUTH_RSPNS_CDE",
+      "value": [
+        "00",
+        "10",
+        "11"
+      ]
+    }
+  },
+  {
+    "name": "EMV_SDR_IND_STTL",
+    "description": "EMV SDR indicator",
+    "category": "Other",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STTL_STD_POS_ENT",
+              "value": [
+                "05",
+                "83",
+                "86"
+              ]
+            },
+            {
+              "op": "eq",
+              "field": "CHIP_CRD_SDR_IND",
+              "value": "Y"
+            }
+          ]
+        },
+        {
+          "op": "not_in",
+          "field": "STTL_STD_POS_ENT",
+          "value": [
+            "05",
+            "83",
+            "86"
+          ]
+        }
+      ]
+    }
+  }
+]

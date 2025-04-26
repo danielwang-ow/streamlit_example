@@ -1,0 +1,591 @@
+[
+  {
+    "name": "MCC_RECURRING_IND",
+    "description": "1 if STD_MCC_CDE in ('4814','4899'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "4814",
+        "4899"
+      ]
+    }
+  },
+  {
+    "name": "MCC_UTILITY_IND",
+    "description": "1 if STD_MCC_CDE = '4900', else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "eq",
+      "field": "STD_MCC_CDE",
+      "value": "4900"
+    }
+  },
+  {
+    "name": "MCC_REALESTATE_IND",
+    "description": "1 if STD_MCC_CDE = '6513', else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "eq",
+      "field": "STD_MCC_CDE",
+      "value": "6513"
+    }
+  },
+  {
+    "name": "MCC_REPAY_IND",
+    "description": "1 if STD_MCC_CDE in ('6051','6012'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "6051",
+        "6012"
+      ]
+    }
+  },
+  {
+    "name": "MCC_INSURANCE_IND",
+    "description": "1 if STD_MCC_CDE in ('5960','6300'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "5960",
+        "6300"
+      ]
+    }
+  },
+  {
+    "name": "MCC_SUPERMARKET_IND",
+    "description": "1 if STD_MCC_CDE in ('5300','5411'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "5300",
+        "5411"
+      ]
+    }
+  },
+  {
+    "name": "MCC_EMERGMKT_IND",
+    "description": "1 if STD_MCC_CDE in ('4899','5968','5983','6533','8211','8220','8299','8351'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "4899",
+        "5968",
+        "5983",
+        "6533",
+        "8211",
+        "8220",
+        "8299",
+        "8351"
+      ]
+    }
+  },
+  {
+    "name": "MCC_CHARITY_IND",
+    "description": "1 if STD_MCC_CDE = '8398', else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "eq",
+      "field": "STD_MCC_CDE",
+      "value": "8398"
+    }
+  },
+  {
+    "name": "MCC_PUBLICSRV_IND",
+    "description": "1 if STD_MCC_CDE in ('4784','9211','9222','9223','9311','9399','9405'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "4784",
+        "9211",
+        "9222",
+        "9223",
+        "9311",
+        "9399",
+        "9405"
+      ]
+    }
+  },
+  {
+    "name": "MCC_RESTUARANTS_IND",
+    "description": "1 if STD_MCC_CDE in ('5812','5814'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "5812",
+        "5814"
+      ]
+    }
+  },
+  {
+    "name": "MCC_MICRO_TKT_IND",
+    "description": "1 if STD_MCC_CDE in ('4111','4112','4131','4784','5499','5552','5994','7211','7216','7338','7523','7542','7832','7841') or MCC_RESTUARANTS_IND = 1, else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "in",
+          "field": "STD_MCC_CDE",
+          "value": [
+            "4111",
+            "4112",
+            "4131",
+            "4784",
+            "5499",
+            "5552",
+            "5994",
+            "7211",
+            "7216",
+            "7338",
+            "7523",
+            "7542",
+            "7832",
+            "7841"
+          ]
+        },
+        {
+          "op": "eq",
+          "field": "MCC_RESTUARANTS_IND",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "MCC_EXPR_SRV_IND",
+    "description": "1 if STD_MCC_CDE in ('4111','4112','4121','4131','4784','5499','5552','5994','7211','7216','7338','7523','7542','7832','7841') or MCC_RESTUARANTS_IND = 1, else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "in",
+          "field": "STD_MCC_CDE",
+          "value": [
+            "4111",
+            "4112",
+            "4121",
+            "4131",
+            "4784",
+            "5499",
+            "5552",
+            "5994",
+            "7211",
+            "7216",
+            "7338",
+            "7523",
+            "7542",
+            "7832",
+            "7841"
+          ]
+        },
+        {
+          "op": "eq",
+          "field": "MCC_RESTUARANTS_IND",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "MCC_PETROLUEM_IND",
+    "description": "1 if STD_MCC_CDE in ('5541','5542'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "5541",
+        "5542"
+      ]
+    }
+  },
+  {
+    "name": "MCC_HIGH_RISK_IND",
+    "description": "1 if STD_MCC_CDE in ('5962','5966','5967'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "5962",
+        "5966",
+        "5967"
+      ]
+    }
+  },
+  {
+    "name": "MCC_PASSENGER_IND",
+    "description": "1 if STD_MCC_CDE in ('4112','4411','4511') or (STD_MCC_CDE between '3000' and '3350'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "in",
+          "field": "STD_MCC_CDE",
+          "value": [
+            "4112",
+            "4411",
+            "4511"
+          ]
+        },
+        {
+          "op": "between",
+          "field": "STD_MCC_CDE",
+          "low": "3000",
+          "high": "3350"
+        }
+      ]
+    }
+  },
+  {
+    "name": "MCC_HOTEL_CARRENT_IND",
+    "description": "1 if STD_MCC_CDE in ('7011','7012','7512','7513','7519') or between '3351'-'3441' or '3501'-'3999', else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "in",
+          "field": "STD_MCC_CDE",
+          "value": [
+            "7011",
+            "7012",
+            "7512",
+            "7513",
+            "7519"
+          ]
+        },
+        {
+          "op": "between",
+          "field": "STD_MCC_CDE",
+          "low": "3351",
+          "high": "3441"
+        },
+        {
+          "op": "between",
+          "field": "STD_MCC_CDE",
+          "low": "3501",
+          "high": "3999"
+        }
+      ]
+    }
+  },
+  {
+    "name": "MCC_QUASI_IND",
+    "description": "1 if STD_MCC_CDE in ('4829','6050','6051','6540'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "4829",
+        "6050",
+        "6051",
+        "6540"
+      ]
+    }
+  },
+  {
+    "name": "MCC_LARGE_TKT_IND",
+    "description": "1 if STD_MCC_CDE in (long list), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "in",
+      "field": "STD_MCC_CDE",
+      "value": [
+        "2741",
+        "2791",
+        "2842",
+        "5013",
+        "5021",
+        "5039",
+        "5044",
+        "5045",
+        "5046",
+        "5047",
+        "5051",
+        "5065",
+        "5072",
+        "5074",
+        "5085",
+        "5094",
+        "5099",
+        "5199",
+        "5111",
+        "5122",
+        "5131",
+        "5137",
+        "5139",
+        "5169",
+        "5172",
+        "5192",
+        "5193",
+        "5198"
+      ]
+    }
+  },
+  {
+    "name": "MCC_CS_VOUCHER_IND",
+    "description": "1 if MCC_HIGH_RISK_IND = 1 or STD_MCC_CDE in ('5960','5964','5965','5968','5969','5262'), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "eq",
+          "field": "MCC_HIGH_RISK_IND",
+          "value": 1
+        },
+        {
+          "op": "in",
+          "field": "STD_MCC_CDE",
+          "value": [
+            "5960",
+            "5964",
+            "5965",
+            "5968",
+            "5969",
+            "5262"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "MCC_RETAIL_IND",
+    "description": "1 if all other MCC indicators are 0, else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "and",
+      "args": [
+        {
+          "op": "eq",
+          "field": "MCC_UTILITY_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_REALESTATE_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_INSURANCE_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_SUPERMARKET_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_EMERGMKT_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_PUBLICSRV_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_PETROLUEM_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_RESTUARANTS_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_HOTEL_CARRENT_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_QUASI_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_HIGH_RISK_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_PASSENGER_IND",
+          "value": 0
+        }
+      ]
+    }
+  },
+  {
+    "name": "MCC_CNP_ECOMM_IND",
+    "description": "1 if all other MCC indicators are 0 (except MCC_RETAIL_IND), else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "and",
+      "args": [
+        {
+          "op": "eq",
+          "field": "MCC_UTILITY_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_REALESTATE_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_INSURANCE_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_EMERGMKT_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_HOTEL_CARRENT_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_PUBLICSRV_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_QUASI_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_HIGH_RISK_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_PASSENGER_IND",
+          "value": 0
+        }
+      ]
+    }
+  },
+  {
+    "name": "MCC_COMM_ELECTRO_IND",
+    "description": "1 if MCC_INSURANCE_IND = 0 and MCC_PASSENGER_IND = 0 and MCC_EMERGMKT_IND = 0 and MCC_PUBLICSRV_IND = 0 and MCC_HOTEL_CARRENT_IND = 0, else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "and",
+      "args": [
+        {
+          "op": "eq",
+          "field": "MCC_INSURANCE_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_PASSENGER_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_EMERGMKT_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_PUBLICSRV_IND",
+          "value": 0
+        },
+        {
+          "op": "eq",
+          "field": "MCC_HOTEL_CARRENT_IND",
+          "value": 0
+        }
+      ]
+    }
+  },
+  {
+    "name": "CS_EMERG_MKT_IND",
+    "description": "1 if MCC_EMERGMKT_IND = 1 and CRD_REPAY_IND = 0, else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "and",
+      "args": [
+        {
+          "op": "eq",
+          "field": "MCC_EMERGMKT_IND",
+          "value": 1
+        },
+        {
+          "op": "eq",
+          "field": "CRD_REPAY_IND",
+          "value": 0
+        }
+      ]
+    }
+  },
+  {
+    "name": "NEW_RETAIL_IND",
+    "description": "1 if MCC_RETAIL_IND = 1 or CS_EMERG_MKT_IND = 1, else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "eq",
+          "field": "MCC_RETAIL_IND",
+          "value": 1
+        },
+        {
+          "op": "eq",
+          "field": "CS_EMERG_MKT_IND",
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "name": "NEW_CNP_IND",
+    "description": "1 if MCC_CNP_ECOMM_IND = 1 or CS_EMERG_MKT_IND = 1, else 0",
+    "category": "MCC",
+    "logic": {
+      "op": "or",
+      "args": [
+        {
+          "op": "eq",
+          "field": "MCC_CNP_ECOMM_IND",
+          "value": 1
+        },
+        {
+          "op": "eq",
+          "field": "CS_EMERG_MKT_IND",
+          "value": 1
+        }
+      ]
+    }
+  }
+]

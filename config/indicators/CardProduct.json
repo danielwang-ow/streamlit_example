@@ -1,0 +1,65 @@
+[
+  {
+    "name": "CS_CRD_IND",
+    "description": "1 if REF_CRD_PRDCT_KEY not in (3,11,14,21,24,25,26,27), else 0",
+    "category": "CardProduct",
+    "logic": {
+      "op": "not_in",
+      "field": "REF_CRD_PRDCT_KEY",
+      "value": [
+        3,
+        11,
+        14,
+        21,
+        24,
+        25,
+        26,
+        27
+      ]
+    }
+  },
+  {
+    "name": "CRD_PUBLIC_SRV_MAX_IND",
+    "description": "1 if REF_CRD_PRDCT_KEY in (5,6,12), else 0",
+    "category": "CardProduct",
+    "logic": {
+      "op": "in",
+      "field": "REF_CRD_PRDCT_KEY",
+      "value": [
+        5,
+        6,
+        12
+      ]
+    }
+  },
+  {
+    "name": "CRD_COMM_B2B_IND",
+    "description": "1 if REF_CRD_PRDCT_KEY in (27,28), else 0",
+    "category": "CardProduct",
+    "logic": {
+      "op": "in",
+      "field": "REF_CRD_PRDCT_KEY",
+      "value": [
+        27,
+        28
+      ]
+    }
+  },
+  {
+    "name": "CRD_REPAY_IND",
+    "description": "1 if REF_CRD_PRDCT_KEY in (5,6,12,16,22,23), else 0",
+    "category": "CardProduct",
+    "logic": {
+      "op": "in",
+      "field": "REF_CRD_PRDCT_KEY",
+      "value": [
+        5,
+        6,
+        12,
+        16,
+        22,
+        23
+      ]
+    }
+  }
+]

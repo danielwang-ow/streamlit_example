@@ -1,0 +1,251 @@
+[
+  {
+    "name": "CARD_PRSNCE",
+    "description": "CP/CNP based on SUBSTR(AUTH_POS_DATA_TXT,5,1)",
+    "category": "Card",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "eq",
+          "field": "AUTH_POS_DATA_TXT[4]",
+          "value": "0"
+        },
+        "CP",
+        {
+          "op": "eq",
+          "field": "AUTH_POS_DATA_TXT[4]",
+          "value": "1"
+        },
+        "CNP",
+        "CNP"
+      ]
+    }
+  },
+  {
+    "name": "STTL_CARD_PRSNCE",
+    "description": "None if SUBSTR(AUTH_POS_DATA_TXT,5,1) is space or None, else value",
+    "category": "Card",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "or",
+          "args": [
+            {
+              "op": "eq",
+              "field": "AUTH_POS_DATA_TXT[4]",
+              "value": " "
+            },
+            {
+              "op": "is_null",
+              "field": "AUTH_POS_DATA_TXT[4]"
+            }
+          ]
+        },
+        null,
+        {
+          "op": "get",
+          "field": "AUTH_POS_DATA_TXT[4]"
+        }
+      ]
+    }
+  },
+  {
+    "name": "AUTH_CP_CNP_IND",
+    "description": "Complex nested logic for CP/CNP indicator",
+    "category": "Card",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "eq",
+          "field": "AUTH_CRD_PRSNCE",
+          "value": "0"
+        },
+        0,
+        {
+          "op": "eq",
+          "field": "AUTH_CRD_PRSNCE",
+          "value": "1"
+        },
+        1,
+        {
+          "op": "if",
+          "args": [
+            {
+              "op": "in",
+              "field": "POS_ENT_MODE_REQ_CDE",
+              "value": [
+                "02",
+                "03",
+                "04",
+                "05",
+                "08",
+                "81",
+                "83",
+                "85",
+                "86",
+                "94"
+              ]
+            },
+            0,
+            {
+              "op": "in",
+              "field": "POS_ENT_MODE_REQ_CDE",
+              "value": [
+                "07",
+                "90",
+                "91",
+                "92",
+                "93",
+                "82"
+              ]
+            },
+            1,
+            {
+              "op": "if",
+              "args": [
+                {
+                  "op": "in",
+                  "field": "AUTH_CRD_PRSNCE",
+                  "value": [
+                    "0"
+                  ]
+                },
+                0,
+                {
+                  "op": "in",
+                  "field": "AUTH_CRD_PRSNCE",
+                  "value": [
+                    "1"
+                  ]
+                },
+                1,
+                {
+                  "op": "if",
+                  "args": [
+                    {
+                      "op": "in",
+                      "field": "AUTH_CRD_PRSNCE",
+                      "value": [
+                        "0"
+                      ]
+                    },
+                    0,
+                    {
+                      "op": "in",
+                      "field": "AUTH_CRD_PRSNCE",
+                      "value": [
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                      ]
+                    },
+                    1,
+                    {
+                      "op": "if",
+                      "args": [
+                        {
+                          "op": "in",
+                          "field": "STTL_STD_POS_ENT",
+                          "value": [
+                            "02",
+                            "03",
+                            "04",
+                            "05",
+                            "08",
+                            "81",
+                            "83",
+                            "85",
+                            "86",
+                            "94"
+                          ]
+                        },
+                        0,
+                        {
+                          "op": "in",
+                          "field": "STTL_STD_POS_ENT",
+                          "value": [
+                            "07",
+                            "90",
+                            "91",
+                            "92",
+                            "93",
+                            "82"
+                          ]
+                        },
+                        1,
+                        0
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "STTL_CP_CNP_IND",
+    "description": "0 if SUBSTR(AUTH_POS_DATA_TXT,5,1) = '0', 1 if '1'",
+    "category": "Card",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "eq",
+          "field": "AUTH_POS_DATA_TXT[4]",
+          "value": "0"
+        },
+        0,
+        {
+          "op": "eq",
+          "field": "AUTH_POS_DATA_TXT[4]",
+          "value": "1"
+        },
+        1,
+        null
+      ]
+    }
+  },
+  {
+    "name": "STTL_AUTH_CNP_IND",
+    "description": "STTL_CP_CNP_IND if not None, else AUTH_CP_CNP_IND",
+    "category": "Card",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "not_null",
+          "field": "STTL_CP_CNP_IND"
+        },
+        {
+          "op": "get",
+          "field": "STTL_CP_CNP_IND"
+        },
+        {
+          "op": "get",
+          "field": "AUTH_CP_CNP_IND"
+        }
+      ]
+    }
+  },
+  {
+    "name": "VALID_CNP_IND",
+    "description": "1 if STTL_AUTH_CNP_IND in (0,1), else 0",
+    "category": "Card",
+    "logic": {
+      "op": "in",
+      "field": "STTL_AUTH_CNP_IND",
+      "value": [
+        0,
+        1
+      ]
+    }
+  }
+]

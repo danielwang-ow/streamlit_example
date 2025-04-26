@@ -3,3 +3,4 @@ numpy
 plotly
 streamlit
 streamlit-modal
+Xlsxwriter

@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import json
+import io
 
 # --------- MOCK DATA DEFINITIONS ---------
 # Card products and MCCs for selection
@@ -465,7 +466,33 @@ with top_tabs[1]:
 
         else:
             st.info("Please click 'Run Simulation' to generate Net Sales results (and make sure at least one product is selected).")
+        
+        
+        if has_run_simulation and card_products:
+            # Prepare the two DataFrames for export (remove styling)
+            export_table1 = df_net_sales.copy()
+            export_table2 = df_net_sales_pct.copy()
 
+            # Optional: Format numbers for Excel (e.g., round to 2 decimals)
+            export_table1 = export_table1.round(2)
+            export_table2 = export_table2.round(2)
+
+            # Create an in-memory buffer
+            output = io.BytesIO()
+            with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+                export_table1.to_excel(writer, index=False, sheet_name='Net Sales ($MM)')
+                export_table2.to_excel(writer, index=False, sheet_name='Net Sales (% of Total)')
+            output.seek(0)
+
+            # Download button
+            st.download_button(
+                label="⬇️ Download Net Sales Tables (Excel)",
+                data=output,
+                file_name=f"Net_Sales_Tables_{st.session_state['scenario_name'].replace(' ', '_')}.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+        
+        
     # =======================
     #  2.2) ALL IN REVENUE
     # =======================
@@ -479,7 +506,9 @@ with top_tabs[1]:
     with results_sub_tabs[2]:
         st.header('"All In" Net Effective Rate')
         st.info('Content for "All In" Net Effective Rate will go here.')
+       
 
+        
 # ----------------------------------------------------------------------------
 # 3) REPORT GENERATION TAB
 # ----------------------------------------------------------------------------

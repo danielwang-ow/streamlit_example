@@ -1,0 +1,257 @@
+[
+  {
+    "name": "TDCC_GRP",
+    "description": "CP/CNP/Invalid/Unknown based on STTL_TRCK_CODE",
+    "category": "TDCC",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "in",
+          "field": "STTL_TRCK_CODE",
+          "value": [
+            "02",
+            "03",
+            "20",
+            "30",
+            "05",
+            "50",
+            "06",
+            "80",
+            "81",
+            "82",
+            "84"
+          ]
+        },
+        "CP",
+        {
+          "op": "in",
+          "field": "STTL_TRCK_CODE",
+          "value": [
+            "70",
+            "71",
+            "72",
+            "74",
+            "90",
+            "91",
+            "99",
+            "60",
+            "61",
+            "00"
+          ]
+        },
+        "CNP",
+        {
+          "op": "in",
+          "field": "STTL_TRCK_CODE",
+          "value": [
+            "04",
+            "40"
+          ]
+        },
+        "Invalid",
+        "Unknown"
+      ]
+    }
+  },
+  {
+    "name": "TRCK_COND_IND_STTL",
+    "description": "Complex TDCC logic",
+    "category": "TDCC",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STTL_STD_POS_ENT",
+              "value": [
+                "05",
+                "83",
+                "86"
+              ]
+            },
+            {
+              "op": "in",
+              "field": "STTL_AUTH_RSPNS_CDE",
+              "value": [
+                "Y1",
+                "Y3"
+              ]
+            }
+          ]
+        },
+        1,
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STTL_STD_POS_ENT",
+              "value": [
+                "02",
+                "81",
+                "85",
+                "86"
+              ]
+            },
+            {
+              "op": "not_in",
+              "field": "STTL_TRCK_CODE",
+              "value": [
+                "02",
+                "03",
+                "05",
+                "06",
+                "20",
+                "30",
+                "50",
+                "80",
+                "81",
+                "82",
+                "84"
+              ]
+            }
+          ]
+        },
+        0,
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STTL_STD_POS_ENT",
+              "value": [
+                "05",
+                "83",
+                "86"
+              ]
+            },
+            {
+              "op": "in",
+              "field": "STTL_AUTH_RSPNS_CDE",
+              "value": [
+                "00",
+                "10",
+                "11"
+              ]
+            },
+            {
+              "op": "not_in",
+              "field": "STTL_TRCK_CODE",
+              "value": [
+                "02",
+                "03",
+                "05",
+                "06",
+                "20",
+                "30",
+                "50",
+                "80",
+                "81",
+                "82",
+                "84"
+              ]
+            }
+          ]
+        },
+        0,
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STTL_STD_POS_ENT",
+              "value": [
+                "01",
+                "07",
+                "10",
+                "82"
+              ]
+            },
+            {
+              "op": "eq",
+              "field": "SECURED_ECOMM_IND",
+              "value": 1
+            },
+            {
+              "op": "not_in",
+              "field": "STTL_TRCK_CODE",
+              "value": [
+                "60",
+                "61"
+              ]
+            }
+          ]
+        },
+        0,
+        1
+      ]
+    }
+  },
+  {
+    "name": "TRCK_COND_RP_IND_STTL",
+    "description": "TDCC for Consumer Debit Repayment",
+    "category": "TDCC",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STTL_STD_POS_ENT",
+              "value": [
+                "05",
+                "83",
+                "86"
+              ]
+            },
+            {
+              "op": "in",
+              "field": "STTL_AUTH_RSPNS_CDE",
+              "value": [
+                "Y1",
+                "Y3"
+              ]
+            }
+          ]
+        },
+        1,
+        {
+          "op": "and",
+          "args": [
+            {
+              "op": "in",
+              "field": "STTL_STD_POS_ENT",
+              "value": [
+                "01",
+                "07",
+                "10",
+                "82",
+                "91"
+              ]
+            },
+            {
+              "op": "not_in",
+              "field": "STTL_TRCK_CODE",
+              "value": [
+                "00",
+                "60",
+                "70",
+                "71",
+                "72",
+                "74"
+              ]
+            }
+          ]
+        },
+        0,
+        1
+      ]
+    }
+  }
+]

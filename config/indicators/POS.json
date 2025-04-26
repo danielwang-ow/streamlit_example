@@ -1,0 +1,124 @@
+[
+  {
+    "name": "POS_ENT_GRP",
+    "description": "CP/CNP/Unknown based on STTL_STD_POS_ENT",
+    "category": "POS",
+    "logic": {
+      "op": "if",
+      "args": [
+        {
+          "op": "in",
+          "field": "STTL_STD_POS_ENT",
+          "value": [
+            "02",
+            "05",
+            "81",
+            "83",
+            "85",
+            "86"
+          ]
+        },
+        "CP",
+        {
+          "op": "in",
+          "field": "STTL_STD_POS_ENT",
+          "value": [
+            "01",
+            "07",
+            "10",
+            "82",
+            "91"
+          ]
+        },
+        "CNP",
+        "Unknown"
+      ]
+    }
+  },
+  {
+    "name": "POS_SWIPE_IND_STTL",
+    "description": "1 if STTL_STD_POS_ENT in ('02','05','81','83','85','86'), else 0",
+    "category": "POS",
+    "logic": {
+      "op": "in",
+      "field": "STTL_STD_POS_ENT",
+      "value": [
+        "02",
+        "05",
+        "81",
+        "83",
+        "85",
+        "86"
+      ]
+    }
+  },
+  {
+    "name": "POS_CNP_IND_STTL",
+    "description": "1 if STTL_STD_POS_ENT in ('01','10','91'), else 0",
+    "category": "POS",
+    "logic": {
+      "op": "in",
+      "field": "STTL_STD_POS_ENT",
+      "value": [
+        "01",
+        "10",
+        "91"
+      ]
+    }
+  },
+  {
+    "name": "POS_ECOM_IND_STTL",
+    "description": "1 if STTL_STD_POS_ENT in ('07','10','82'), else 0",
+    "category": "POS",
+    "logic": {
+      "op": "in",
+      "field": "STTL_STD_POS_ENT",
+      "value": [
+        "07",
+        "10",
+        "82"
+      ]
+    }
+  },
+  {
+    "name": "POS_ECOM_SECURED_IND_STTL",
+    "description": "1 if STTL_STD_POS_ENT in ('01','07','10','82'), else 0",
+    "category": "POS",
+    "logic": {
+      "op": "in",
+      "field": "STTL_STD_POS_ENT",
+      "value": [
+        "01",
+        "07",
+        "10",
+        "82"
+      ]
+    }
+  },
+  {
+    "name": "POS_ENT_KEY_STTL",
+    "description": "1 if STTL_STD_POS_ENT = '01', else 0",
+    "category": "POS",
+    "logic": {
+      "op": "eq",
+      "field": "STTL_STD_POS_ENT",
+      "value": "01"
+    }
+  },
+  {
+    "name": "POS_REPAY_IND_STTL",
+    "description": "1 if STTL_STD_POS_ENT in ('01','07','10','82','91'), else 0",
+    "category": "POS",
+    "logic": {
+      "op": "in",
+      "field": "STTL_STD_POS_ENT",
+      "value": [
+        "01",
+        "07",
+        "10",
+        "82",
+        "91"
+      ]
+    }
+  }
+]
